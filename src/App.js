@@ -7,6 +7,8 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import BookDetails from "./pages/BookDetails";
+import BestSellers from "./pages/BestSellers";
+import Categories from "./pages/Categories";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/books/:id" element={<BookDetails />} />
+          <Route path="/bestsellers" element={<BestSellers />} />
+          <Route path="/categories" element={<Categories />} />
         </Routes>
       </div>
 

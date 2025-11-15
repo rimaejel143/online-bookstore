@@ -9,7 +9,7 @@ function BookDetails() {
     return <h1 className="text-center text-2xl mt-20">Book not found</h1>;
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-12">
+    <div className="max-w-4xl mx-auto px-6 py-20">
       <h1 className="text-4xl font-bold">{book.title}</h1>
       <p className="text-gray-600 mt-2">Author: {book.author}</p>
       <p className="text-2xl font-semibold mt-4">${book.price}</p>
