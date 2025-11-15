@@ -17,38 +17,53 @@ function Home() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10">
+    <div className="bg-[#F7F2EB] min-h-screen">
       {/* ================= HERO SECTION ================= */}
       <Hero />
 
-      {/* ================= SEARCH BAR ================= */}
-      <SearchBar onSearch={handleSearch} />
+      {/* ================= SEARCH + CONTENT WRAPPER ================= */}
+      <div className="max-w-6xl mx-auto px-6">
+        {/* ================= SEARCH BAR ================= */}
+        <SearchBar onSearch={handleSearch} />
 
-      {/* ================= ALL BOOKS SECTION ================= */}
-      <h2 className="text-3xl font-bold mt-16 mb-6"> All Books</h2>
+        {/* ================= ALL BOOKS TITLE ================= */}
+        <h2 className="text-4xl font-extrabold text-[#2E563F] mt-16 mb-6">
+          All Books
+        </h2>
 
-      {filteredBooks.length === 0 && (
-        <p className="text-gray-600 text-lg">No books found.</p>
-      )}
+        {/* Empty search result */}
+        {filteredBooks.length === 0 && (
+          <p className="text-[#4A5C4F] text-lg">No books found.</p>
+        )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-20">
-        {filteredBooks.map((book) => (
-          <div
-            key={book.id}
-            className="bg-white shadow-md rounded-lg p-5 border hover:shadow-xl transition"
-          >
-            <h3 className="text-xl font-semibold">{book.title}</h3>
-            <p className="text-gray-600">Author: {book.author}</p>
-            <p className="text-gray-900 font-bold mt-2">${book.price}</p>
-
-            <Link
-              to={`/books/${book.id}`}
-              className="inline-block mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg"
+        {/* ================= BOOKS GRID ================= */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mb-20">
+          {filteredBooks.map((book) => (
+            <div
+              key={book.id}
+              className="bg-[#F5F0E9] shadow-md rounded-xl p-6 border border-[#D6CEC2] 
+              hover:shadow-xl hover:-translate-y-1 transition-all"
             >
-              View Details
-            </Link>
-          </div>
-        ))}
+              <h3 className="text-2xl font-bold text-[#2E563F]">
+                {book.title}
+              </h3>
+
+              <p className="text-[#4A5C4F] mt-1">Author: {book.author}</p>
+
+              <p className="text-[#2E563F] font-bold text-lg mt-3">
+                ${book.price}
+              </p>
+
+              <Link
+                to={`/books/${book.id}`}
+                className="inline-block mt-5 bg-[#2E563F] hover:bg-[#244C36] 
+                text-white px-5 py-2 rounded-xl transition"
+              >
+                View Details
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

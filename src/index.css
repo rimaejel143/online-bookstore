@@ -1,3 +1,61 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* GLOBAL WEBSITE STYLING – Beige + Green Theme */
+
+/* خلفية لكل الموقع */
+body {
+  background-color: #f5f0e9; /* Beige soft */
+  color: #2e2e2e; /* Default dark text */
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* الروابط */
+a {
+  color: #2e563f; /* Dark Forest Green */
+}
+
+a:hover {
+  color: #244c36; /* Darker green */
+}
+
+/* أزرار عامة */
+button {
+  background-color: #2e563f;
+  color: white;
+  border-radius: 6px;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background-color: #244c36;
+}
+
+/* بطاقات الكتب */
+.book-card {
+  background-color: white;
+  border: 1px solid #e0d9ce; /* beige border */
+  border-radius: 10px;
+  padding: 18px;
+  transition: 0.2s ease;
+}
+
+.book-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Navbar Background  */
+.navbar {
+  background-color: #fbf7f0; /* light beige */
+  border-bottom: 1px solid #e4ddd3;
+}
+
+/* Footer */
+footer {
+  background-color: #2e563f;
+  color: white;
+  padding: 20px 0;
+}

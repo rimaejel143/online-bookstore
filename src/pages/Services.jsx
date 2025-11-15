@@ -2,30 +2,30 @@ import React from "react";
 
 function Services() {
   return (
-<<<<<<< HEAD
-    <div className="max-w-4xl mx-auto px-6 py-20">
-      <h1 className="text-4xl font-bold mb-6">Our Services</h1>
+    <div className="bg-[#F7F2EB] min-h-screen px-6 py-20">
+      <div className="max-w-5xl mx-auto">
+        <h1 className="text-5xl font-extrabold text-[#2E563F] mb-8">
+          Our Services
+        </h1>
 
-      <ul className="space-y-6 text-gray-700 text-lg">
-        <li>✔ Fast & reliable book delivery</li>
-        <li>✔ Access to e-books & digital content</li>
-        <li>✔ Personalized book recommendations</li>
-        <li>✔ Premium membership & exclusive discounts</li>
-=======
+        <ul className="mt-10 text-lg space-y-6 text-[#4A5C4F] leading-relaxed">
+          <li className="bg-[#F5F0E9] p-4 rounded-xl border border-[#D6CEC2] shadow-sm">
+            Fast & reliable book delivery
+          </li>
 
-    <div className="max-w-5xl mx-auto px-6 py-20">
-      <h1 className="text-4xl font-bold text-blue-700">Our Services</h1>
-      <ul className="mt-10 text-lg space-y-6 text-gray-700">
-        <li>Fast & reliable book delivery</li>
-        <li>Access to e-books & digital content</li>
-        <li>Personalized book recommendations</li>
-        <li>Premium membership & exclusive discounts</li>
+          <li className="bg-[#F5F0E9] p-4 rounded-xl border border-[#D6CEC2] shadow-sm">
+            Access to e-books & digital content
+          </li>
 
-    
-=
-       
->>>>>>> 644390cf0c0f7beaf18e5f6681bd7ab220d48756
-      </ul>
+          <li className="bg-[#F5F0E9] p-4 rounded-xl border border-[#D6CEC2] shadow-sm">
+            Personalized book recommendations
+          </li>
+
+          <li className="bg-[#F5F0E9] p-4 rounded-xl border border-[#D6CEC2] shadow-sm">
+            Premium membership & exclusive discounts
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }

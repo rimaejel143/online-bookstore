@@ -5,7 +5,7 @@ function MainLayout({ children }) {
   return (
     <>
       <Navbar />
-      <div className="pt-20">{children}</div>
+      <div className="pt-20 bg-[#F7F2EB] min-h-screen">{children}</div>
       <Footer />
     </>
   );
