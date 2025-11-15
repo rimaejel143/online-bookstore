@@ -1,17 +1,23 @@
-import React from 'react'
+import React from "react";
 
 function About() {
   return (
-    <div className="max-w-5xl mx-auto px-6 py-20">
-        <h1 className="text-4xl font-bold text-blue-700">About Us</h1>
-        <p className="mt-6 text-lg leading-8 text-gray-700">We are online bookstore thst provide a wide selection of books from 
-            different categories including fiction, delf-help, education, and more</p>
-        <p className="mt-4 text-lg leading-8 text-gray-700">Our goal is to make reading accessible to everyone by offering affordable
-        prices, fast delivery, and a simple user experience.
-        </p>
-    
+    <div className="max-w-4xl mx-auto px-6 py-20">
+      <h1 className="text-4xl font-bold mb-6">About Us</h1>
+
+      <p className="text-gray-700 leading-relaxed text-lg">
+        Welcome to our online bookstore! We created this platform to make books
+        more accessible to readers everywhere. Our mission is to provide a
+        seamless, fast, and enjoyable reading experience.
+      </p>
+
+      <p className="text-gray-700 mt-6 leading-relaxed text-lg">
+        We believe in the power of books to inspire, educate, and transform.  
+        Here, you can explore new titles, discover top recommendations, and read
+        detailed descriptions before choosing your next favorite book.
+      </p>
     </div>
   );
 }
 
-export default About
+export default About;
