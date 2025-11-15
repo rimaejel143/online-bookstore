@@ -6,10 +6,10 @@ function Services() {
       <h1 className="text-4xl font-bold mb-6">Our Services</h1>
 
       <ul className="space-y-6 text-gray-700 text-lg">
-        <li>✔ Fast & reliable book delivery</li>
-        <li>✔ Access to e-books & digital content</li>
-        <li>✔ Personalized book recommendations</li>
-        <li>✔ Premium membership & exclusive discounts</li>
+        <li>Fast & reliable book delivery</li>
+        <li>Access to e-books & digital content</li>
+        <li> Personalized book recommendations</li>
+        <li>Premium membership & exclusive discounts</li>
       </ul>
     </div>
   );
