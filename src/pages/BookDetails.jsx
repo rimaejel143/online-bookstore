@@ -1,54 +1,51 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import books from "../data/Books";
 
 function BookDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const book = books.find((b) => b.id === parseInt(id));
 
   if (!book)
-    return (
-      <h1 className="text-center text-2xl text-[#2E563F] mt-20">
-        Book not found
-      </h1>
-    );
+    return <h1 className="text-center text-2xl mt-20">Book not found</h1>;
 
   return (
-    <div className="bg-[#F7F2EB] min-h-screen px-6 py-20">
-      <div className="max-w-4xl mx-auto bg-[#F5F0E9] p-10 rounded-2xl shadow-md border border-[#D6CEC2]">
-        {/* Title */}
-        <h1 className="text-5xl font-extrabold text-[#2E563F]">{book.title}</h1>
-
-        {/* Author */}
-        <p className="mt-3 text-lg text-[#4A5C4F]">
-          Author: <span className="font-semibold">{book.author}</span>
-        </p>
-
-        {/* Price */}
-        <p className="mt-4 text-3xl font-bold text-[#2E563F]">${book.price}</p>
-
-        {/* Book Image */}
+    <div className="max-w-5xl mx-auto px-6 py-20">
+      <div className="flex flex-col md:flex-row gap-10 items-start">
+        {/* صورة الكتاب */}
         {book.image && (
           <img
             src={book.image}
             alt={book.title}
-            className="mt-6 w-64 rounded-xl shadow-lg mx-auto"
+            className="w-64 h-80 object-cover rounded-xl shadow-md"
           />
         )}
 
-        {/* Description */}
-        <p className="mt-8 text-[#4A5C4F] leading-relaxed text-lg">
-          {book.description}
-        </p>
+        {/* معلومات الكتاب */}
+        <div>
+          <h1 className="text-4xl font-bold text-[#2E563F]">{book.title}</h1>
 
-        {/* Button */}
-        <button
-          className="mt-10 bg-[#2E563F] hover:bg-[#244C36] 
-          text-white px-8 py-3 rounded-xl 
-          font-semibold shadow-md transition 
-          block mx-auto"
-        >
-          Add to Reading List
-        </button>
+          <p className="text-gray-600 mt-2 text-lg">
+            Author: <span className="font-medium">{book.author}</span>
+          </p>
+
+          <p className="text-2xl font-semibold mt-4 text-green-700">
+            ${book.price}
+          </p>
+
+          <p className="mt-6 text-gray-800 text-lg leading-relaxed max-w-xl">
+            {book.description}
+          </p>
+
+          {/* زر الشراء */}
+          <button
+            onClick={() => navigate(`/buy/${book.id}`)}
+            className="mt-8 bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded-lg shadow-md font-semibold"
+          >
+            Buy This Book
+          </button>
+        </div>
       </div>
     </div>
   );
