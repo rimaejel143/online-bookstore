@@ -1,4 +1,4 @@
-import books from "../data/books";
+import books from "../data/Books";
 import BookCard from "./BookCard";
 
 function BookGrid() {
