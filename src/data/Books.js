@@ -32,7 +32,7 @@ const books = [
   {
     id: 4,
     title: "The Power of Now",
-    author: "Eckhart Tolle",
+    author: "Eckhart Tol",
     price: 16,
     bestseller: false,
     category: "Spirituality",
