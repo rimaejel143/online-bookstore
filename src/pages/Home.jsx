@@ -18,25 +18,19 @@ function Home() {
 
   return (
     <div className="bg-[#F7F2EB] min-h-screen">
-      {/* ================= HERO SECTION ================= */}
       <Hero />
 
-      {/* ================= SEARCH + CONTENT WRAPPER ================= */}
       <div className="max-w-6xl mx-auto px-6">
-        {/* ================= SEARCH BAR ================= */}
         <SearchBar onSearch={handleSearch} />
 
-        {/* ================= ALL BOOKS TITLE ================= */}
         <h2 className="text-4xl font-extrabold text-[#2E563F] mt-16 mb-6">
           All Books
         </h2>
 
-        {/* Empty search result */}
         {filteredBooks.length === 0 && (
           <p className="text-[#4A5C4F] text-lg">No books found.</p>
         )}
 
-        {/* ================= BOOKS GRID ================= */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mb-20">
           {filteredBooks.map((book) => (
             <div

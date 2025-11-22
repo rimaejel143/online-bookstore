@@ -2,7 +2,6 @@ import books from "../data/Books";
 import { Link } from "react-router-dom";
 
 function BestSellers() {
-  // نجيب الكتب يلي عندها bestseller = true
   const best = books.filter((b) => b.bestseller === true);
 
   return (

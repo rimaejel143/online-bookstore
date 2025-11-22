@@ -51,7 +51,7 @@ const books = [
   },
   {
     id: 6,
-    title: "The Subtle Art of Not Giving a F*ck",
+    title: "The Subtle Art",
     author: "Mark Manson",
     price: 13,
     bestseller: true,
@@ -82,7 +82,7 @@ const books = [
   {
     id: 9,
     title: "Start With Why",
-    author: "Simon Sinek",
+    author: "Simon Sine",
     price: 19,
     bestseller: false,
     category: "Leadership",

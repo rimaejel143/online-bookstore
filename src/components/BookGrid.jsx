@@ -11,7 +11,7 @@ function BookGrid() {
             title={b.title}
             author={b.author}
             image={b.image}
-            id={b.id} // مهم للـ routing
+            id={b.id}
           />
         ))}
       </div>

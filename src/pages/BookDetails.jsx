@@ -13,7 +13,6 @@ function BookDetails() {
   return (
     <div className="max-w-5xl mx-auto px-6 py-20">
       <div className="flex flex-col md:flex-row gap-10 items-start">
-        {/* صورة الكتاب */}
         {book.image && (
           <img
             src={book.image}
@@ -22,7 +21,6 @@ function BookDetails() {
           />
         )}
 
-        {/* معلومات الكتاب */}
         <div>
           <h1 className="text-4xl font-bold text-[#2E563F]">{book.title}</h1>
 
@@ -38,7 +36,6 @@ function BookDetails() {
             {book.description}
           </p>
 
-          {/* زر الشراء */}
           <button
             onClick={() => navigate(`/buy/${book.id}`)}
             className="mt-8 bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded-lg shadow-md font-semibold"

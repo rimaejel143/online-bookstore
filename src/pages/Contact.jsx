@@ -4,7 +4,6 @@ function Contact() {
   return (
     <div className="bg-[#F7F2EB] min-h-screen px-6 py-20">
       <div className="max-w-4xl mx-auto">
-        {/* Title */}
         <h1 className="text-5xl font-extrabold text-[#2E563F] mb-8">
           Contact Us
         </h1>
@@ -14,12 +13,10 @@ function Contact() {
           options below.
         </p>
 
-        {/* Contact Box */}
         <div className="mt-10 bg-[#F5F0E9] border border-[#D6CEC2] shadow-md rounded-2xl p-8 space-y-5">
           <p className="text-lg text-[#2E563F] font-semibold">
             📧 Email:
             <span className="font-normal text-[#4A5C4F]">
-              {" "}
               support@onlinebookstore.com
             </span>
           </p>

@@ -9,7 +9,7 @@ function SearchBar({ onSearch }) {
   };
 
   return (
-    <div className="mt-10 mb-8 flex justify-center">
+    <div className="mt-0 mb-0 flex justify-center">
       <input
         type="text"
         value={text}

@@ -6,7 +6,6 @@ function BuyForm() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // ❗ كل الـ useState لازم يكون بأول الكومبوننت
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
