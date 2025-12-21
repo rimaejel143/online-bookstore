@@ -64,3 +64,11 @@ app.post("/api/login", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
+app.get("/api/books", async (req, res) => {
+  try {
+    const [books] = await db.query("SELECT * FROM books");
+    res.json(books);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch books" });
+  }
+});
