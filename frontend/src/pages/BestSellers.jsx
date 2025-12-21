@@ -1,8 +1,18 @@
-import books from "../data/Books";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function BestSellers() {
-  const best = books.filter((b) => b.bestseller === true);
+  const [bestBooks, setBestBooks] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/books")
+      .then((res) => res.json())
+      .then((data) => {
+        const best = data.filter((book) => book.is_best_seller === 1);
+        setBestBooks(best);
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <div className="bg-[#F7F2EB] min-h-screen px-6 py-20">
@@ -12,10 +22,10 @@ function BestSellers() {
         </h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-          {best.map((book) => (
+          {bestBooks.map((book) => (
             <div
-              key={book.id}
-              className="bg-[#F5F0E9] border border-[#D6CEC2] shadow-md p-6 rounded-xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              key={book.book_id}
+              className="bg-[#F5F0E9] border border-[#D6CEC2] shadow-md p-6 rounded-xl"
             >
               <h2 className="text-2xl font-bold text-[#2E563F]">
                 {book.title}
@@ -28,8 +38,8 @@ function BestSellers() {
               </p>
 
               <Link
-                to={`/books/${book.id}`}
-                className="inline-block mt-5 bg-[#2E563F] text-white px-5 py-2 rounded-xl hover:bg-[#244C36] transition"
+                to={`/books/${book.book_id}`}
+                className="inline-block mt-5 bg-[#2E563F] text-white px-5 py-2 rounded-xl"
               >
                 Details
               </Link>

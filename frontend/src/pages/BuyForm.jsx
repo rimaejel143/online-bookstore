@@ -12,10 +12,34 @@ function BuyForm() {
 
   const book = books.find((b) => b.id === parseInt(id));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(`Order placed successfully for ${book.title}!`);
-    navigate("/");
+
+    try {
+      const response = await fetch("http://localhost:5000/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: 1, // مؤقتًا (لما نعمل login بصير ديناميكي)
+          totalPrice: book.price,
+          address: address,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("Order placed successfully!");
+        navigate("/");
+      } else {
+        alert(data.message || "Something went wrong");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Server error");
+    }
   };
 
   return (

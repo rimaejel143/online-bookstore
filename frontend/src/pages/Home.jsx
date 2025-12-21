@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Hero from "../components/Hero";
 import SearchBar from "../components/SearchBar";
 import { Link } from "react-router-dom";
@@ -14,9 +14,7 @@ function Home() {
         setBooks(data);
         setFilteredBooks(data);
       })
-      .catch((err) => {
-        console.error("Error fetching books:", err);
-      });
+      .catch((err) => console.error(err));
   }, []);
 
   const handleSearch = (text) => {
@@ -39,31 +37,16 @@ function Home() {
           All Books
         </h2>
 
-        {filteredBooks.length === 0 && (
-          <p className="text-[#4A5C4F] text-lg">No books found.</p>
-        )}
-
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mb-20">
           {filteredBooks.map((book) => (
-            <div
-              key={book.id}
-              className="bg-[#F5F0E9] shadow-md rounded-xl p-6 border border-[#D6CEC2] 
-              hover:shadow-xl hover:-translate-y-1 transition-all"
-            >
-              <h3 className="text-2xl font-bold text-[#2E563F]">
-                {book.title}
-              </h3>
-
-              <p className="text-[#4A5C4F] mt-1">Author: {book.author}</p>
-
-              <p className="text-[#2E563F] font-bold text-lg mt-3">
-                ${book.price}
-              </p>
+            <div key={book.book_id} className="bg-[#F5F0E9] p-6 rounded-xl">
+              <h3 className="text-2xl font-bold">{book.title}</h3>
+              <p className="mt-1">Author: {book.author}</p>
+              <p className="mt-2 font-bold">${book.price}</p>
 
               <Link
-                to={`/books/${book.id}`}
-                className="inline-block mt-5 bg-[#2E563F] hover:bg-[#244C36] 
-                text-white px-5 py-2 rounded-xl transition"
+                to={`/books/${book.book_id}`}
+                className="inline-block mt-4 bg-green-700 text-white px-4 py-2 rounded"
               >
                 View Details
               </Link>

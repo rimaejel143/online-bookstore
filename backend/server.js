@@ -2,11 +2,13 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const db = require("./config/db");
+const orderRoutes = require("./routes/orders");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use("/api/orders", orderRoutes);
 
 app.get("/api/test", (req, res) => {
   res.json({ message: "Backend is running successfully" });
