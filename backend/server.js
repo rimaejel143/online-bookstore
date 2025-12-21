@@ -38,3 +38,29 @@ app.post("/api/signup", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
+
+app.post("/api/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const [users] = await db.query(
+      "SELECT * FROM users WHERE email = ? AND password = ?",
+      [email, password]
+    );
+
+    if (users.length === 0) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    res.json({
+      message: "Login successful",
+      user: {
+        id: users[0].id,
+        name: users[0].name,
+        email: users[0].email,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+});
