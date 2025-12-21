@@ -1,14 +1,46 @@
 import { useParams, useNavigate } from "react-router-dom";
-import books from "../data/Books";
+import { useEffect, useState } from "react";
 
 function BookDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const book = books.find((b) => b.id === parseInt(id));
+  const [book, setBook] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  if (!book)
-    return <h1 className="text-center text-2xl mt-20">Book not found</h1>;
+  useEffect(() => {
+    const fetchBook = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/books/${id}`);
+
+        if (!response.ok) {
+          throw new Error("Book not found");
+        }
+
+        const data = await response.json();
+        setBook(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBook();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <h1 className="text-center text-2xl mt-20 text-[#2E563F]">
+        Loading book details...
+      </h1>
+    );
+  }
+
+  if (error) {
+    return <h1 className="text-center text-2xl mt-20 text-red-600">{error}</h1>;
+  }
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-20">
