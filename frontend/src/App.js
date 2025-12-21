@@ -9,6 +9,8 @@ import Contact from "./pages/Contact";
 import BookDetails from "./pages/BookDetails";
 import BestSellers from "./pages/BestSellers";
 import BuyForm from "./pages/BuyForm";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 function App() {
   return (
