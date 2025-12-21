@@ -1,11 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Hero from "../components/Hero";
 import SearchBar from "../components/SearchBar";
-import books from "../data/Books";
 import { Link } from "react-router-dom";
 
 function Home() {
-  const [filteredBooks, setFilteredBooks] = useState(books);
+  const [books, setBooks] = useState([]);
+  const [filteredBooks, setFilteredBooks] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/books")
+      .then((res) => res.json())
+      .then((data) => {
+        setBooks(data);
+        setFilteredBooks(data);
+      })
+      .catch((err) => {
+        console.error("Error fetching books:", err);
+      });
+  }, []);
 
   const handleSearch = (text) => {
     const results = books.filter(
