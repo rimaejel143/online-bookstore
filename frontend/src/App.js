@@ -26,6 +26,8 @@ function App() {
           <Route path="/books/:id" element={<BookDetails />} />
           <Route path="/bestsellers" element={<BestSellers />} />
           <Route path="/buy/:id" element={<BuyForm />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </div>
 
