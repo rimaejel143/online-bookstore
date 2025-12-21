@@ -72,3 +72,9 @@ app.get("/api/books", async (req, res) => {
     res.status(500).json({ message: "Failed to fetch books" });
   }
 });
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
