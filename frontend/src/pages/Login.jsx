@@ -3,27 +3,28 @@ import { login } from "../services/api";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-  });
-  const navigate = useNavigate();
+ const [form, setForm] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  function handleChange(e) {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  }
+  const onChange = (e) => {
+    setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
+  };
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await login(form);
+    setError("");
+    setLoading(true);
 
-    if (result.user) {
-      localStorage.setItem("user", JSON.stringify(result.user));
-      navigate("/");
-    } else {
-      alert(result.message);
+    try {
+      
+      console.log("LOGIN DATA:", form);
+    } catch (err) {
+      setError("Login failed. Please check your email/password.");
+    } finally {
+      setLoading(false);
     }
-  }
+  };
   return (
     <div className="p-8 max-w-md mx-auto">
       <h2 className="text-2xl mb-4">Login</h2>
