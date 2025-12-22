@@ -2,18 +2,17 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const db = require("./config/db");
-
-const booksRoutes = require("./routes/books");
 const orderRoutes = require("./routes/orders");
+const booksRoutes = require("./routes/books");
 
-const app = express(); // ✅ لازم أول شي
+const app = express();
 
 app.use(cors());
 app.use(express.json());
 
 // routes
-app.use("/api/books", booksRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/books", booksRoutes);
 
 // test
 app.get("/api/test", (req, res) => {
