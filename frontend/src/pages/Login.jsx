@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { login } from "../services/api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Login() {
  const [form, setForm] = useState({ email: "", password: "" });
@@ -68,9 +68,9 @@ function Login() {
             </div>
             <div className="auth-foot">
               Don’t have an account?{" "}
-              <link className="auth-link" to="/signup">
+              <Link className="auth-link" to="/signup">
                 Sign Up
-              </link>
+              </Link>
             </div>
 
       </form>
