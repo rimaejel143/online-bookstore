@@ -63,6 +63,44 @@ function Signup(){
                 required
               />
             </div>
+            <div>
+              <label className="block text-sm font-medium text-[#2f5b49] mb-1">
+                Email
+              </label>
+              <input
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                onChange={handleChange}
+                value={form.email}
+                className="w-full rounded-xl border border-black/15 bg-white px-4 py-3 outline-none
+                           focus:ring-2 focus:ring-[#2f5b49]/40 focus:border-[#2f5b49]/40"
+                required
+              />
+            </div>
+           <div>
+              <label className="block text-sm font-medium text-[#2f5b49] mb-1">
+                Password
+              </label>
+              <input
+                name="password"
+                type="password"
+                placeholder="••••••••"
+                onChange={handleChange}
+                value={form.password}
+                className="w-full rounded-xl border border-black/15 bg-white px-4 py-3 outline-none
+                           focus:ring-2 focus:ring-[#2f5b49]/40 focus:border-[#2f5b49]/40"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full rounded-xl bg-[#2f5b49] text-white py-3 font-semibold
+                         hover:bg-[#264b38] transition disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+              {loading ? "Creating account..." : "Sign Up"}
+            </button>
 
          </form>
 
