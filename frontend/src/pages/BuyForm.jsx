@@ -28,7 +28,7 @@ function BuyForm() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userId: 1, // مؤقت (لاحقًا من login)
+          userId: 1,
           address: address,
           items: [
             {
