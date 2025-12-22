@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Hero from "../components/Hero";
 import SearchBar from "../components/SearchBar";
 import { Link } from "react-router-dom";
+import BookCard from "../components/BookCard";
 
 function Home() {
   const [books, setBooks] = useState([]);

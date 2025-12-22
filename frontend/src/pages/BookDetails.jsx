@@ -27,6 +27,12 @@ function BookDetails() {
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-20">
+      <img
+        src={book.image_url}
+        alt={book.title}
+        className="w-64 h-80 object-cover rounded-xl shadow mb-6"
+      />
+
       <h1 className="text-4xl font-bold text-[#2E563F]">{book.title}</h1>
 
       <p className="mt-2 text-lg">Author: {book.author}</p>
