@@ -3,7 +3,12 @@ import {login, signup} from "../services/api";
 import { useNavigate, Link } from "react-router-dom";
 
 function Signup(){
-    const [form, setForm] = useState({ email: "", password: "" });
+    const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -16,20 +21,19 @@ function Signup(){
     setLoading(true);
 
     try {
-      const result = await login(form);
+      const result = await signup(form);
 
-      if (result.user) {
-        localStorage.setItem("user", JSON.stringify(result.user));
-        navigate("/");
+      if (result.message === "User registered successfully") {
+        alert("Signup successful!");
+        navigate("/login");
       } else {
         alert(result.message);
       }
-    } catch (err) {
-      alert("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
   }
+
     return(
         <div className="min-h-screen bg-[#f6f1ea] flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-md">
@@ -47,23 +51,53 @@ function Signup(){
              <label className="block text-sm font-medium text-[#2f5b49] mb-1">
                 Email
               </label>
+              <input
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                onChange={handleChange}
+                value={form.email}
+                className="w-full rounded-xl border border-black/15 bg-white px-4 py-3 outline-none focus:ring-2 focus:ring-[#2f5b49]/40 focus:border-[#2f5b49]/40"
+                required
+              />
             </div>
-
+            <div>
+                <label className="block text-sm font-medium text-[#2f5b49] mb-1">
+                Password
+              </label>
+              <input
+                name="password"
+                type="password"
+                placeholder="••••••••"
+                onChange={handleChange}
+                value={form.password}
+                className="w-full rounded-xl border border-black/15 bg-white px-4 py-3 outline-none focus:ring-2 focus:ring-[#2f5b49]/40 focus:border-[#2f5b49]/40"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full rounded-xl bg-[#2f5b49] text-white py-3 font-semibold shadow-md hover:brightness-110 active:scale-[0.99] transition disabled:opacity-60"
+            >
+              {loading ? "Logging in..." : "Login"}
+            </button>
+            <div className="text-center text-sm text-black/60">
+              Don’t have an account?{" "}
+              <Link
+                to="/signup"
+                className="font-semibold text-[#2f5b49] hover:underline"
+              >
+                Sign Up
+              </Link>
+            </div>
+               
           </form>
         </div>
-
-
+         <p className="text-center text-xs text-black/50 mt-4">
+          Online Bookstore • Secure Login
+        </p>
       </div>
-
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input name="name" placeholder="Name" onChange={handleChange} className="border p-2 w-full" />
-         <input name="email" type="email" placeholder="Email" onChange={handleChange} className="border p-2 w-full" />
-        <input name="password" type="password" placeholder="Password" onChange={handleChange} className="border p-2 w-full" />
-          <button className="bg-black text-white px-4 py-2 w-full">
-          Sign Up
-        </button>
-
-      </form>
       </div>
     );
    
