@@ -39,8 +39,39 @@ function Login() {
       <form  className="auth-form" onSubmit={handleSubmit}>
         <div className="auth-row">
           <label className="auth-label">Email</label>
-
+          <input
+                className="auth-input"
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                value={form.email}
+                onChange={onChange}
+                required
+              />
         </div>
+        <div className="auth-row">
+              <label className="auth-label">Password</label>
+              <input
+                className="auth-input"
+                type="password"
+                name="password"
+                placeholder="••••••••"
+                value={form.password}
+                onChange={onChange}
+                required
+              />
+            </div>
+             <div className="auth-actions">
+              <button className="auth-btn" disabled={loading}>
+                {loading ? "Logging in..." : "Login"}
+              </button>
+            </div>
+            <div className="auth-foot">
+              Don’t have an account?{" "}
+              <link className="auth-link" to="/signup">
+                Sign Up
+              </link>
+            </div>
 
       </form>
 
