@@ -101,10 +101,21 @@ function Signup(){
             >
               {loading ? "Creating account..." : "Sign Up"}
             </button>
-
+            <div className="text-center text-sm text-black/60">
+              Already have an account?{" "}
+              <Link
+                to="/login"
+                className="font-semibold text-[#2f5b49] hover:underline"
+              >
+                Login
+              </Link>
+            </div>
          </form>
 
             </div>
+             <p className="text-center text-xs text-black/50 mt-4">
+          Online Bookstore • Secure Signup
+        </p>
 
         </div>
         </div>
