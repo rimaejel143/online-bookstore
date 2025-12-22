@@ -1,63 +1,93 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import books from "../data/Books";
+import { useState } from "react";
 
 function BuyForm() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [book, setBook] = useState(null);
+  const [name, setName] = useState("");
   const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/api/books/${id}`)
-      .then((res) => res.json())
-      .then((data) => setBook(data));
-  }, [id]);
+  const book = books.find((b) => b.id === parseInt(id));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const orderData = {
-      userId: 1, // مؤقت
-      address,
-      items: [
-        {
-          book_id: book.book_id,
-          quantity: 1,
+    try {
+      const response = await fetch("http://localhost:5000/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      ],
-    };
+        body: JSON.stringify({
+          userId: 1, // مؤقتًا
+          address: address,
+          items: [
+            {
+              book_id: book.book_id ?? book.id,
+              quantity: 1,
+            },
+          ],
+        }),
+      });
 
-    const res = await fetch("http://localhost:5000/api/orders", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(orderData),
-    });
+      const data = await response.json();
 
-    if (res.ok) {
-      alert("Order placed successfully!");
-      navigate("/");
-    } else {
-      alert("Error creating order");
+      if (response.ok) {
+        alert("Order placed successfully!");
+        navigate("/");
+      } else {
+        alert(data.message || "Something went wrong");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Server error");
     }
   };
 
-  if (!book) return <p>Loading...</p>;
-
   return (
-    <div className="max-w-xl mx-auto py-20">
-      <h1 className="text-3xl font-bold mb-6">Buy: {book.title}</h1>
+    <div className="max-w-xl mx-auto px-6 py-20">
+      <h1 className="text-3xl font-bold mb-6">Buy: {book?.title}</h1>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        <textarea
-          required
-          placeholder="Your address"
-          className="w-full border p-3 rounded"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
+        <div>
+          <label className="font-semibold">Your Name</label>
+          <input
+            type="text"
+            className="w-full border p-3 rounded-lg"
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
 
-        <button className="w-full bg-green-700 text-white py-3 rounded">
+        <div>
+          <label className="font-semibold">Email</label>
+          <input
+            type="email"
+            className="w-full border p-3 rounded-lg"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+
+        <div>
+          <label className="font-semibold">Address</label>
+          <textarea
+            className="w-full border p-3 rounded-lg"
+            required
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-green-700 hover:bg-green-800 text-white py-3 rounded-lg font-semibold"
+        >
           Confirm Order
         </button>
       </form>
