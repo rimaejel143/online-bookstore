@@ -137,13 +137,44 @@ export default function Auth() {
                 ? "Sign Up"
                 : "Login"}
             </button>
+            
+            <div className="text-center text-sm text-black/60">
+            {isSignup ? (
+                <>
+                 Already have an account?{" "}
+                  <button
+                    type="button"
+                    onClick={() => switchMode("login")}
+                    className="font-semibold text-[#2f5b49] hover:underline"
+                  >
+                    Login
+                  </button>
+                </>
+
+            ): (
+                <>
+                  Don’t have an account?{" "}
+                  <button
+                    type="button"
+                    onClick={() => switchMode("signup")}
+                    className="font-semibold text-[#2f5b49] hover:underline"
+                  >
+                    Sign Up
+                  </button>
+                </>
+            )}
+
+            </div>
                </form>
                 </div> 
-
+               <p className="text-center text-xs text-black/50 mt-4">
+          Online Bookstore • Secure {isSignup ? "Signup" : "Login"}
+        </p>
+                
             </div>
 
         </div>
-    )
+    );
 
 
       }
