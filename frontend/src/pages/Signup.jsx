@@ -1,9 +1,9 @@
-import { useState} from "react";
-import {login, signup} from "../services/api";
+import { useState } from "react";
+import { login, signup } from "../services/api";
 import { useNavigate, Link } from "react-router-dom";
 
-function Signup(){
-    const [form, setForm] = useState({
+function Signup() {
+  const [form, setForm] = useState({
     name: "",
     email: "",
     password: "",
@@ -34,21 +34,19 @@ function Signup(){
     }
   }
 
-    return(
-        <div className="min-h-[calc(100vh-160px)] bg-[#f6f1ea] flex items-center justify-center px-4 py-10">
-        <div className="w-full max-w-md">
-            <div className="bg-white/80 backdrop-blur rounded-2xl shadow-lg border border-black/10 overflow-hidden">
-
-         <div className="px-6 py-5 bg-[#2f5b49]">
+  return (
+    <div className="min-h-[calc(100vh-160px)] bg-[#f6f1ea] flex items-center justify-center px-4 py-10">
+      <div className="w-full max-w-md">
+        <div className="bg-white/80 backdrop-blur rounded-2xl shadow-lg border border-black/10 overflow-hidden">
+          <div className="px-6 py-5 bg-[#2f5b49]">
             <h2 className="text-2xl font-semibold text-white">
               Create Account
             </h2>
             <p className="text-white/80 text-sm mt-1">
               Join our online bookstore 📚
             </p>
-      
-         </div>
-         <form onSubmit={handleSubmit} className="px-6 py-6 space-y-4">
+          </div>
+          <form onSubmit={handleSubmit} className="px-6 py-6 space-y-4">
             <div>
               <label className="block text-sm font-medium text-[#2f5b49] mb-1">
                 Name
@@ -78,7 +76,7 @@ function Signup(){
                 required
               />
             </div>
-           <div>
+            <div>
               <label className="block text-sm font-medium text-[#2f5b49] mb-1">
                 Password
               </label>
@@ -110,17 +108,13 @@ function Signup(){
                 Login
               </Link>
             </div>
-         </form>
-
-            </div>
-             <p className="text-center text-xs text-black/50 mt-4">
+          </form>
+        </div>
+        <p className="text-center text-xs text-black/50 mt-4">
           Online Bookstore • Secure Signup
         </p>
-
-        </div>
-        </div>
-        
-    );
-   
+      </div>
+    </div>
+  );
 }
 export default Signup;
