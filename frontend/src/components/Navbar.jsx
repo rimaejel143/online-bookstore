@@ -55,14 +55,8 @@ function Navbar() {
           {!user ? (
             <>
               <li>
-                <Link to="/login" className="hover:text-[#244C36] transition">
+                <Link to="/Auth" className="hover:text-[#244C36] transition">
                   Login
-                </Link>
-              </li>
-
-              <li>
-                <Link to="/signup" className="hover:text-[#244C36] transition">
-                  Sign Up
                 </Link>
               </li>
             </>

@@ -11,7 +11,6 @@ import BestSellers from "./pages/BestSellers";
 import BuyForm from "./pages/BuyForm";
 import Auth from "./pages/Auth";
 
-
 function App() {
   return (
     <Router>
@@ -27,7 +26,6 @@ function App() {
           <Route path="/bestsellers" element={<BestSellers />} />
           <Route path="/buy/:id" element={<BuyForm />} />
           <Route path="/Auth" element={<Auth />} />
-          
         </Routes>
       </div>
 
