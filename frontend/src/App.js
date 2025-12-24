@@ -9,8 +9,8 @@ import Contact from "./pages/Contact";
 import BookDetails from "./pages/BookDetails";
 import BestSellers from "./pages/BestSellers";
 import BuyForm from "./pages/BuyForm";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Auth from "./pages/Auth";
+
 
 function App() {
   return (
@@ -26,8 +26,8 @@ function App() {
           <Route path="/books/:id" element={<BookDetails />} />
           <Route path="/bestsellers" element={<BestSellers />} />
           <Route path="/buy/:id" element={<BuyForm />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/Auth" element={<Auth />} />
+          
         </Routes>
       </div>
 
