@@ -26,58 +26,59 @@ function Login() {
     }
   };
   return (
-    <div className="auth-page">
+  <div className="auth-page">
     <div className="auth-card">
-       <h1 className="auth-title">Login</h1>
-        <p className="auth-subtitle">
-            Welcome back! Please login to continue.
-          </p>
 
-    </div>
-    <div className="auth-body">
+      <h1 className="auth-title">Login</h1>
+      <p className="auth-subtitle">
+        Welcome back! Please login to continue.
+      </p>
+
       {error && <div className="auth-error">{error}</div>}
-      <form  className="auth-form" onSubmit={handleSubmit}>
+
+      <form className="auth-form" onSubmit={handleSubmit}>
         <div className="auth-row">
           <label className="auth-label">Email</label>
           <input
-                className="auth-input"
-                type="email"
-                name="email"
-                placeholder="you@example.com"
-                value={form.email}
-                onChange={onChange}
-                required
-              />
+            className="auth-input"
+            type="email"
+            name="email"
+            placeholder="you@example.com"
+            value={form.email}
+            onChange={onChange}
+            required
+          />
         </div>
-        <div className="auth-row">
-              <label className="auth-label">Password</label>
-              <input
-                className="auth-input"
-                type="password"
-                name="password"
-                placeholder="••••••••"
-                value={form.password}
-                onChange={onChange}
-                required
-              />
-            </div>
-             <div className="auth-actions">
-              <button className="auth-btn" disabled={loading}>
-                {loading ? "Logging in..." : "Login"}
-              </button>
-            </div>
-            <div className="auth-foot">
-              Don’t have an account?{" "}
-              <Link className="auth-link" to="/signup">
-                Sign Up
-              </Link>
-            </div>
 
+        <div className="auth-row">
+          <label className="auth-label">Password</label>
+          <input
+            className="auth-input"
+            type="password"
+            name="password"
+            placeholder="••••••••"
+            value={form.password}
+            onChange={onChange}
+            required
+          />
+        </div>
+
+        <button className="auth-btn" disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
+        </button>
+
+        <div className="auth-foot">
+          Don’t have an account?{" "}
+          <Link className="auth-link" to="/signup">
+            Sign Up
+          </Link>
+        </div>
       </form>
 
     </div>
-    </div>
-  );
+  </div>
+);
+
 }
 
 export default Login;
