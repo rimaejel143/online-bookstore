@@ -8,15 +8,34 @@ function Home() {
   const [books, setBooks] = useState([]);
   const [filteredBooks, setFilteredBooks] = useState([]);
 
-  // جلب الكتب من الـ backend
+  // // جلب الكتب من الـ backend
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/api/books")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setBooks(data);
+  //       setFilteredBooks(data);
+  //     })
+  //     .catch((err) => console.error(err));
+  // }, []);
   useEffect(() => {
     fetch("http://localhost:5000/api/books")
       .then((res) => res.json())
       .then((data) => {
-        setBooks(data);
-        setFilteredBooks(data);
+        if (Array.isArray(data)) {
+          setBooks(data);
+          setFilteredBooks(data);
+        } else {
+          setBooks([]);
+          setFilteredBooks([]);
+          console.error("Books API did not return an array", data);
+        }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        setBooks([]);
+        setFilteredBooks([]);
+      });
   }, []);
 
   const handleSearch = (text) => {
