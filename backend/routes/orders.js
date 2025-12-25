@@ -65,5 +65,28 @@ router.post("/", async (req, res) => {
     connection.release();
   }
 });
+router.get("/order-items", async (req, res) => {
+  try {
+    const [rows] = await db.query(`
+      SELECT 
+        o.order_id,
+        u.name AS user_name,
+        u.email,
+        b.title AS book_title,
+        oi.quantity,
+        o.created_at
+      FROM orders o
+      JOIN users u ON o.user_id = u.user_id
+      JOIN order_items oi ON o.order_id = oi.order_id
+      JOIN books b ON oi.book_id = b.book_id
+      ORDER BY o.created_at DESC
+    `);
+
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Failed to fetch order items" });
+  }
+});
 
 module.exports = router;
