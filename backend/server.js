@@ -10,7 +10,11 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://rimaejel43.github.io",
+    origin: [
+      "http://localhost:3000",
+      "http://127.0.0.1:3000",
+      "https://rimaejel43.github.io",
+    ],
     credentials: true,
   })
 );
@@ -26,8 +30,8 @@ app.get("/api/test", (req, res) => {
   res.json({ message: "Backend is running successfully" });
 });
 
-// signup
-app.post("/api/signup", async (req, res) => {
+// auth: signup
+app.post("/api/auth/signup", async (req, res) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
@@ -55,8 +59,8 @@ app.post("/api/signup", async (req, res) => {
   }
 });
 
-// login
-app.post("/api/login", async (req, res) => {
+// auth: login
+app.post("/api/auth/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
