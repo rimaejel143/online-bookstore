@@ -10,6 +10,7 @@ import BookDetails from "./pages/BookDetails";
 import BestSellers from "./pages/BestSellers";
 import BuyForm from "./pages/BuyForm";
 import Auth from "./pages/Auth";
+import OrderItems from "./pages/OrderItems";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/bestsellers" element={<BestSellers />} />
           <Route path="/buy/:id" element={<BuyForm />} />
           <Route path="/Auth" element={<Auth />} />
+          <Route path="/order-items" element={<OrderItems />} />
         </Routes>
       </div>
 

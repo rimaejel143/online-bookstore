@@ -50,6 +50,9 @@ function Navbar() {
               Contact
             </Link>
           </li>
+          <li>
+            <Link to="/order-items">Orders</Link>
+          </li>
 
           {/* 🔐 Auth Section */}
           {!user ? (

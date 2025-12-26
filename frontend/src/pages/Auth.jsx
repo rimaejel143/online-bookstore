@@ -37,10 +37,15 @@ export default function Auth() {
 
       alert(result.message);
 
+      // ✅ نحفظ user بعد login
+      if (!isSignup && result.user) {
+        localStorage.setItem("user", JSON.stringify(result.user));
+      }
+
       if (result.message.toLowerCase().includes("success")) {
         navigate("/");
       }
-    } catch (err) {
+    } catch {
       alert("Server error");
     } finally {
       setLoading(false);
@@ -50,98 +55,61 @@ export default function Auth() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#f6f1ea] px-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden">
-        {/* Header */}
         <div className="bg-[#2f5b49] px-6 py-5">
           <h2 className="text-2xl font-semibold text-white">
             {isSignup ? "Create Account" : "Welcome Back"}
           </h2>
-          <p className="text-sm text-white/80 mt-1">
-            {isSignup ? "Join our online bookstore" : "Login to your account"}
-          </p>
         </div>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="px-6 py-6 space-y-4">
           {isSignup && (
-            <div>
-              <label className="block text-sm font-medium mb-1 text-[#2f5b49]">
-                Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                placeholder="Your full name"
-                className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#2f5b49]/40"
-                required
-              />
-            </div>
+            <input
+              name="name"
+              placeholder="Name"
+              value={form.name}
+              onChange={handleChange}
+              className="w-full border p-2 rounded"
+              required
+            />
           )}
 
-          <div>
-            <label className="block text-sm font-medium mb-1 text-[#2f5b49]">
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="you@example.com"
-              className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#2f5b49]/40"
-              required
-            />
-          </div>
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            value={form.email}
+            onChange={handleChange}
+            className="w-full border p-2 rounded"
+            required
+          />
 
-          <div>
-            <label className="block text-sm font-medium mb-1 text-[#2f5b49]">
-              Password
-            </label>
-            <input
-              type="password"
-              name="password"
-              value={form.password}
-              onChange={handleChange}
-              placeholder="••••••••"
-              className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#2f5b49]/40"
-              required
-            />
-          </div>
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={form.password}
+            onChange={handleChange}
+            className="w-full border p-2 rounded"
+            required
+          />
 
           <button
-            type="submit"
             disabled={loading}
-            className="w-full bg-[#2f5b49] text-white py-2.5 rounded-lg font-semibold hover:bg-[#264b38] transition"
+            className="w-full bg-[#2f5b49] text-white py-2 rounded"
           >
             {loading ? "Please wait..." : isSignup ? "Sign Up" : "Login"}
           </button>
 
-          <div className="text-center text-sm text-gray-600">
-            {isSignup ? (
-              <>
-                Already have an account?{" "}
-                <button
-                  type="button"
-                  onClick={() => switchMode("login")}
-                  className="w-70 bg-[#2f5b49] text-white py-2 px-5 rounded-lg font-semibold"
-                >
-                  Login
-                </button>
-              </>
-            ) : (
-              <>
-                Don’t have an account?{" "}
-                <button
-                  type="button"
-                  onClick={() => switchMode("signup")}
-                  className="w-70 bg-[#2f5b49] text-white py-2 px-5 rounded-lg font-semibold"
-                >
-                  Sign Up
-                </button>
-              </>
-            )}
-          </div>
+          <p className="text-center text-sm">
+            {isSignup ? "Already have an account?" : "Don’t have an account?"}
+            <button
+              type="button"
+              onClick={() => switchMode(isSignup ? "login" : "signup")}
+              className="ml-2 text-green-700 font-semibold"
+            >
+              {isSignup ? "Login" : "Sign Up"}
+            </button>
+          </p>
         </form>
       </div>
     </div>
