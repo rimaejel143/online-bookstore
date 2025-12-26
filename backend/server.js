@@ -63,13 +63,21 @@ app.post("/api/login", async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
+    // normalize id field: DB may use `id` or `user_id`
+    const rawUser = users[0];
+    const userId = rawUser.id ?? rawUser.user_id ?? rawUser.userId;
+
+    const resultUser = {
+      id: userId,
+      name: rawUser.name,
+      email: rawUser.email,
+    };
+
+    console.log("Login result user:", resultUser);
+
     res.json({
       message: "Login successful",
-      user: {
-        id: users[0].id,
-        name: users[0].name,
-        email: users[0].email,
-      },
+      user: resultUser,
     });
   } catch {
     res.status(500).json({ message: "Server error" });

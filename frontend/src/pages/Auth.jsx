@@ -37,12 +37,16 @@ export default function Auth() {
 
       alert(result.message);
 
-      // ✅ نحفظ user بعد login
-      if (!isSignup && result.user) {
-        localStorage.setItem("user", JSON.stringify(result.user));
-      }
-
-      if (result.message.toLowerCase().includes("success")) {
+      // store user only when backend returned a user object and success
+      if (result.message.toLowerCase().includes("success") && result.user) {
+        // normalize and store user with explicit id field
+        const normalizedUser = {
+          id: result.user.id ?? result.user.user_id ?? result.user.userId,
+          name: result.user.name,
+          email: result.user.email,
+        };
+        console.log("Storing user in localStorage:", normalizedUser);
+        localStorage.setItem("user", JSON.stringify(normalizedUser));
         navigate("/");
       }
     } catch {
