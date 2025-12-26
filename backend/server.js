@@ -8,7 +8,13 @@ const booksRoutes = require("./routes/books");
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://rimaejel43.github.io",
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 // routes
